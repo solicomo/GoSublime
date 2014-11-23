@@ -242,7 +242,7 @@ class GsGorenameCommand(sublime_plugin.TextCommand):
 		else:
 			scope_ok = gs.is_go_source_view(self.view)
 
-		return scope_ok and gs.setting('fmt_enabled') is True
+		return scope_ok 
 
 	def run(self, edit):
 		view = self.view
