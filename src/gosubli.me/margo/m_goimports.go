@@ -5,14 +5,14 @@ import (
 	"go/parser"
 )
 
-type mFmt struct {
+type mGoImports struct {
 	Fn        string
 	Src       string
 	TabIndent bool
 	TabWidth  int
 }
 
-func (m *mFmt) Call() (interface{}, string) {
+func (m *mGoImports) Call() (interface{}, string) {
 	res := M{}
 	fset, af, err := parseAstFile(m.Fn, m.Src, parser.ParseComments)
 	if err == nil {
@@ -24,7 +24,7 @@ func (m *mFmt) Call() (interface{}, string) {
 
 func init() {
 	registry.Register("goimports", func(b *Broker) Caller {
-		return &mFmt{
+		return &mGoImports{
 			TabIndent: true,
 			TabWidth:  8,
 		}
